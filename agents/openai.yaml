@@ -2,4 +2,3 @@ interface:
   display_name: "昇腾模型权重预取开发"
   short_description: "基于实际模型结构与 profiling，设计通信重叠预取并完成实现及配对验证"
   default_prompt: "使用 $ascend-model-weight-prefetch，根据目标模型源码、部署配置和 profiling 分析预取机会，开发最小候选并验证消费者和服务收益。"
-
