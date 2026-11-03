@@ -1,0 +1,31 @@
+{
+  "model": {"name": "example-dense-decoder", "family": "dense", "source": null},
+  "require_allreduce": true,
+  "runs": {
+    "baseline": {"model_revision": null, "weight_revision": null, "tp": 2, "ep": 1, "pp": 1, "graph_mode": "decode", "quantization": "none", "workload_hash": null, "source_diff_evidence": null},
+    "candidate": {"model_revision": null, "weight_revision": null, "tp": 2, "ep": 1, "pp": 1, "graph_mode": "decode", "quantization": "none", "workload_hash": null, "source_diff_evidence": null}
+  },
+  "components": [
+    {"name": "next_input_projection", "stage": "unclassified", "name_regex": "(?i)matmul", "shape_regex": "^32,2048;6144,2048$", "mapping_evidence": null}
+  ],
+  "trace": {
+    "prefetch_regex": "^CMO$",
+    "communication_regex": "^hcom_allReduce_",
+    "join_regex": "prefetch_join",
+    "mapping_evidence": null
+  },
+  "candidates": [
+    {
+      "name": "next-input-during-allreduce",
+      "routing": "none",
+      "weight": {"shape": [6144, 2048], "dtype": "bf16", "format": "ND", "storage_bytes": 25165824, "binding_evidence": null},
+      "budget_bytes": 2097152,
+      "alignment_bytes": 32,
+      "window": {"kind": "allreduce", "consumer_after_window": null, "source_evidence": null},
+      "memory_evidence": null,
+      "start_site": null,
+      "join_site": null
+    }
+  ]
+}
+
