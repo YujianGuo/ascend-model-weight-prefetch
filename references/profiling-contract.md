@@ -54,4 +54,3 @@ python scripts/analyze_prefetch.py --baseline /profiles/base/ASCEND_PROFILER_OUT
 ```
 
 输出不会自动读取邻近目录的业务 benchmark，避免误配旧结果。服务测量独立核对输入 ID/内容、生成策略、输出长度、并发和 profiler 开关，按用户标准评估业务正确率/EOS/异常。报告中同时保留 kernel、trace 和服务三个口径及各自数据来源。
-
