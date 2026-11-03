@@ -36,4 +36,3 @@ The manifest example is a schema starter, not verified model evidence. Profile o
 ## License
 
 No license has been specified for this repository.
-
